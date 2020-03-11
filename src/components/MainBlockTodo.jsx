@@ -36,7 +36,7 @@ const Input = styled.input`
     width: 100%;
 `;
 
-const TodoMainBlock = (pros) => {
+const MainBlockTodo = () => {
     return (
         <div>
             <MainBlock>
@@ -45,7 +45,7 @@ const TodoMainBlock = (pros) => {
             </MainBlock>
         </div>
     )
-}
+};
 
-export default TodoMainBlock;
+export default MainBlockTodo;
 

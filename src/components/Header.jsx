@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TodoMainBlock from "./TodoMainBlock"
+import MainBlockTodo from "./MainBlockTodo"
 
 const Header = styled.div`
 background-color: blue;
@@ -10,13 +10,13 @@ margin: 30px auto;
 color: white;
 `;
 
-const HeaderContainer = (pros) => {
+const HeaderContainer = () => {
     return (
         <div>
             <Header>
                 MY_TODO_LIST
             </Header>
-            <TodoMainBlock />
+            <MainBlockTodo />
         </div>
     )
 };
