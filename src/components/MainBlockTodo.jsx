@@ -3,22 +3,22 @@ import styled, {css} from "styled-components";
 
 const MainBlockTodo = (props) => {
 
-    const [val, setVal] = useState("");
+    const [tempValue, setTempValue] = useState("");
 
     const onChangeInput = (e) => {
-        setVal(e.currentTarget.value);
+        setTempValue(e.currentTarget.value);
     };
 
     const onButtonClick = () => {
-        props.addTask(val);
-        setVal("");
+        props.addNewTask(tempValue);
+        setTempValue("");
     };
 
     return (
         <InputButtonBlock>
             <span><b>Task:</b></span>
             <Input placeholder={"Enter your task"}
-                   value={val}
+                   value={tempValue}
                    onChange={onChangeInput}
                    type="text"/>
             <Button primary onClick={onButtonClick}>Add</Button>

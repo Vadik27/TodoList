@@ -1,46 +1,24 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import MainBlockTodo from "./MainBlockTodo"
 import Task from "./Task";
 
 const MyTodoList = (props) => {
 
-    const [tasks, setTasks] = useState([]);
-
-    const addTask = (title) => {
-        if (title) {
-            setTasks([
-                {id: Date.now(), title: title, isDone: false},
-                ...tasks
-            ]);
-        }
-    };
-
-    const deleteTask = (task) => {
-        setTasks(
-            tasks.filter(currentTask => currentTask !== task)
-        );
-    };
-
-    const updateTask = (task) => {
-        task.isDone = !task.isDone;
-        setTasks([...tasks])
-    };
-
     return (
         <MainContainer>
             <HeaderBlock>
-                <div>MY_TODO_LIST</div>
+                <div>MYTODOLIST</div>
             </HeaderBlock>
             <MainBlock>
-                <MainBlockTodo addTask={addTask}/>
+                <MainBlockTodo addNewTask={props.addNewTask}/>
             </MainBlock>
             <TasksBlock>
                 {
-                    tasks.map(task => <Task key={task.id}
-                                            task={task}
-                                            deleteTask={deleteTask}
-                                            updateTask={updateTask}/>)
+                    props.state.tasks.map(task => <Task key={task.id}
+                                                        task={task}
+                                                        deleteTask={props.deleteTask}
+                                                        updateTask={props.updateTask}/>)
                 }
             </TasksBlock>
         </MainContainer>
