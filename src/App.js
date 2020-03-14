@@ -1,13 +1,13 @@
 import React from 'react';
-import HeaderContainer from "./components/Header";
+import MyTodoList from "./components/Header";
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <HeaderContainer/>
+      <MyTodoList />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,10 @@
+.titleTask {
+    font-size: large;
+    width: 70%;
+}
+
+.lineThrough {
+    font-size: medium;
+    width: 70%;
+    text-decoration: blue line-through;
+}

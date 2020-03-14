@@ -1,25 +1,74 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import MainBlockTodo from "./MainBlockTodo"
+import Task from "./Task";
 
-const Header = styled.div`
-background-color: blue;
-width: 80%;
-min-height: 100px;
-margin: 30px auto;
-color: white;
-`;
+const MyTodoList = (props) => {
 
-const HeaderContainer = () => {
+    const [tasks, setTasks] = useState([]);
+
+    const addTask = (title) => {
+        if (title) {
+            setTasks([
+                {id: Date.now(), title: title, isDone: false},
+                ...tasks
+            ]);
+        }
+    };
+
+    const deleteTask = (task) => {
+        setTasks(
+            tasks.filter(currentTask => currentTask !== task)
+        );
+    };
+
+    const updateTask = (task) => {
+        task.isDone = !task.isDone;
+        setTasks([...tasks])
+    };
+
     return (
-        <div>
-            <Header>
-                MY_TODO_LIST
-            </Header>
-            <MainBlockTodo />
-        </div>
+        <MainContainer>
+            <HeaderBlock>
+                <div>MY_TODO_LIST</div>
+            </HeaderBlock>
+            <MainBlock>
+                <MainBlockTodo addTask={addTask}/>
+            </MainBlock>
+            <TasksBlock>
+                {
+                    tasks.map(task => <Task key={task.id}
+                                            task={task}
+                                            deleteTask={deleteTask}
+                                            updateTask={updateTask}/>)
+                }
+            </TasksBlock>
+        </MainContainer>
     )
 };
 
-export default HeaderContainer;
+export default MyTodoList;
+
+const MainContainer = styled.div` 
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;    
+    padding: 10px;
+    border: 1px solid silver;
+`;
+
+const HeaderBlock = styled.div`
+    flex-basis: 50px;
+    background-color: blue;
+    color: white;
+`;
+
+const MainBlock = styled.div`
+    
+`;
+
+const TasksBlock = styled.div`
+     
+`;
 
